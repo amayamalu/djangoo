@@ -1,0 +1,48 @@
+{%extends 'base.html'%}
+
+{%block title_block%}
+
+<title>task-detail</title>
+
+{%endblock%}
+
+{%block body_block%}
+
+<div class="container">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4 mt-4">
+      {%for m in messages%}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{m}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {%endfor%}
+     
+      <div class="card mt-3" style="width:100%">
+        <div class="card-header fs-2 bg-body-tertiary text-center ">Task Details</div>
+          
+          
+        
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{task.task_name}}</li>
+          <li class="list-group-item">{{task.user}}</li>
+          <li class="list-group-item">{{task.status}}</li>
+          <li class="list-group-item">{{task.created_date}}</li>
+        </ul>
+        <div class="mt-2">
+          <a href="{%url 'task-edit' task.id%}" class="btn btn-outline-info btn-lg w-100">Edit</a>
+          <a href="{%url 'task-delete' task.id%}" class="btn btn-outline-danger btn-lg w-100 ">Delete</a>
+       </div>
+       
+      </div>
+      
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>
+  
+
+
+
+{%endblock%}

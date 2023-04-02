@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+
+{%block  title_block%}
+
+<title>task-edit</title>
+
+{%endblock%}
+
+{%block body_block%}
+<div class="container mt-3">
+    <div class="row mt-3">
+        <div class="col-4"></div>
+        <div class="col-4">
+            {%for m in messages%}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{m}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {%endfor%}
+            <form action="" method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" value="Update" class="btn btn-outline-info form-control">
+             </form>
+            
+
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+
+{%endblock%}

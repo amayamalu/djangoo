@@ -1,0 +1,67 @@
+{%extends 'base.html'%}
+
+{%block title-block%}
+
+<title>task-list</title>
+
+{%endblock%}
+
+{%block body_block%}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            {%for m in messages%}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{m}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {%endfor%}
+            
+        <h1 class="text-center">Tasks!!!!</h1>
+        <a href="{%url 'task-add'%}" class="btn btn-dark">Add Your Task</a>
+        <a href="{%url 'signout'%}" class="btn btn-dark">LOGOUT</a>
+
+
+        <table class="table table-striped mt-4 table-secondary">
+            <tr>
+                <th>Id</th>
+                <th>Task Name</th>
+                <th>User</th>
+                <th>Status</th>
+                <th>Created Date</th>
+                <th></th>
+            </tr>
+            {%for t in tasks%}
+
+            <tr>
+                <td>{{t.id}}</td>
+                <td>{{t.task_name}}</td>
+                <td>{{t.user}}</td>
+                <td>{{t.status}}</td>
+                <td>{{t.created_date}}</td>
+
+                <td>
+                    <a href="{%url 'task-detail' t.id%}" class="btn btn-outline-success">Detail</a>
+                    <!-- <a href="{%url 'task-edit' t.id%}" class="btn btn-outline-info">Edit</a>
+                    <a href="{%url 'task-delete' t.id%}" class="btn btn-outline-danger">Delete</a> -->
+                </td>
+
+
+            </tr>
+            {%endfor%}
+
+
+
+
+
+        </table>
+    </div>
+    <div class="col-2"></div>
+</div>
+</div>
+
+
+{%endblock%}
